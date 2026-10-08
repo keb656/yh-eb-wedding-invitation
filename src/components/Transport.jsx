@@ -38,16 +38,14 @@ export default function Transport() {
 
       <div className="info-group">
         <h3 className="info-group__title">BUS · 시내버스</h3>
-        {busStops.map((stop) => (
-          <div className="bus-stop" key={stop.stop}>
-            <p className="bus-stop__name">[{stop.stop}]</p>
-            <ul className="bus-list">
-              {stop.buses.map((bus) => (
-                <li key={bus}>{bus}</li>
-              ))}
-            </ul>
-          </div>
-        ))}
+        <ul className="info-list">
+          {busStops.map((stop) => (
+            <li key={stop.stop}>
+              <span className="info-list__label">[{stop.stop}]</span>
+              <span className="times">{stop.buses.join(', ')}</span>
+            </li>
+          ))}
+        </ul>
       </div>
 
       <div className="info-group">

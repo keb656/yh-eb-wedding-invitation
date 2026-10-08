@@ -35,11 +35,6 @@ export default function WeddingDay() {
         </p>
       </div>
 
-      <div className="day-block day-block--venue">
-        <p className="day-block__date">{venue.nameEn}</p>
-        <p className="day-block__ko">{venue.placeEn}</p>
-      </div>
-
       <table className="mini-calendar">
         <caption>
           {calendar.year}. {String(calendar.month).padStart(2, '0')}

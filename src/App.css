@@ -545,10 +545,6 @@
   border-top: 1px solid var(--ink);
 }
 
-.day-block--venue {
-  border-top-color: var(--line);
-}
-
 .day-block__date {
   font-family: var(--serif);
   font-size: clamp(32px, 10vw, 46px);
@@ -645,9 +641,35 @@
   font-weight: 500;
 }
 
-.venue span {
+.venue__address {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   font-size: 14px;
   color: var(--muted);
+}
+
+.icon-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 0;
+  color: var(--accent);
+  background: transparent;
+}
+
+.icon-button:hover {
+  color: var(--ink);
+}
+
+.map-links {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .map {
@@ -687,31 +709,6 @@
 
 .info-group--first {
   margin-top: 0;
-}
-
-.bus-stop + .bus-stop {
-  margin-top: 8px;
-}
-
-.bus-stop__name {
-  padding-top: 16px;
-  font-size: 13px;
-  color: var(--accent);
-}
-
-.bus-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 6px;
-  padding-top: 16px;
-}
-
-.bus-list li {
-  padding: 5px 10px;
-  border: 1px solid var(--line);
-  font-family: var(--sans-en);
-  font-size: 13px;
-  letter-spacing: 0.02em;
 }
 
 .spec__row {
