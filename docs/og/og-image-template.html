@@ -1,28 +1,16 @@
 <!doctype html>
 <!--
   카카오톡 미리보기 이미지(public/og-image.jpg) 템플릿 — 1200×630
-  첫 화면 사진(src/assets/hero.png)을 오른쪽에 사용합니다.
-  사진을 바꾼 뒤 이 파일을 브라우저로 열어 1200×630으로 캡처하거나,
-  Claude에게 "카톡 미리보기 이미지 다시 만들어줘"라고 요청하세요.
+  이름·날짜는 미리보기 아래 제목/설명(index.html의 og:title, og:description)에 표시되므로
+  이미지에는 문구만 둡니다. 카톡이 가운데를 잘라 보여줘도 문구가 보이도록 가운데 정렬.
 -->
 <html><head><meta charset="utf-8">
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
   html,body{margin:0;width:1200px;height:630px;overflow:hidden}
-  .card{display:grid;grid-template-columns:540px 1fr;width:1200px;height:630px;background:#f6f3ec;color:#1d2738}
-  .text{display:flex;flex-direction:column;justify-content:center;padding:0 0 0 68px}
-  .eyebrow{font:400 14px Inter,sans-serif;letter-spacing:.3em;color:#5c7290;margin:0 0 26px}
-  h1{margin:0;font:400 64px/0.98 "DM Serif Display",serif;letter-spacing:-.02em}
-  .amp{display:block;font:300 24px Inter,sans-serif;margin:10px 0 8px}
-  .info{margin-top:34px;padding-top:22px;border-top:1px solid rgba(20,24,34,.25);width:360px;
-    font:400 15px/1.9 Inter,sans-serif;letter-spacing:.16em;color:#4a505c}
-  .photo{background:url("../../src/assets/hero.png") 50% 30%/cover}
+  .card{display:flex;align-items:center;justify-content:center;width:1200px;height:630px;background:#f6f3ec}
+  h1{margin:0;font:400 76px/1.05 "DM Serif Display",serif;letter-spacing:-.01em;text-align:center;color:#1d2738}
 </style></head>
 <body><div class="card">
-  <div class="text">
-    <p class="eyebrow">THE WEDDING OF</p>
-    <h1>KIM YOUNGHWAN<span class="amp">&amp;</span>KIM EUNBI</h1>
-    <div class="info">2027.01.09 SAT 01:00 PM<br>THE BLESS / YONSEI ALUMNI HALL</div>
-  </div>
-  <div class="photo"></div>
+  <h1>WEDDING<br>INVITATION</h1>
 </div></body></html>
