@@ -11,7 +11,7 @@ export default function QuickView() {
 
   const goToSnap = () => {
     setOpen(false)
-    requestAnimationFrame(() => requestAnimationFrame(() => scrollToSection('snap')))
+    requestAnimationFrame(() => requestAnimationFrame(() => scrollToSection('event')))
   }
 
   return (

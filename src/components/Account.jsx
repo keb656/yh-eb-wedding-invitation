@@ -1,4 +1,4 @@
-import { accounts } from '../data/wedding'
+import { accounts, sectionIndex } from '../data/wedding'
 import { useCopy } from '../hooks/useCopy'
 import SectionHeader from './SectionHeader'
 
@@ -8,7 +8,7 @@ export default function Account() {
   return (
     <section id="account" className="section" tabIndex={-1} aria-labelledby="account-title">
       <SectionHeader
-        index="05"
+        index={sectionIndex('account')}
         title="ACCOUNT"
         id="account-title"
         subtitle="참석이 어려우신 분들을 위해 계좌번호를 안내드립니다."

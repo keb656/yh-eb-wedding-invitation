@@ -19,13 +19,16 @@ npm run preview  # 빌드 결과 확인
 | --- | --- |
 | 이름 / 부모님 | `couple`, `parents` |
 | 날짜 / 시간 | `wedding` (캘린더·D-Day는 `start`/`end` 기준) |
-| 예식장 / 지도 링크 | `venue`, `mapUrls` (`embed`에 iframe URL을 넣으면 지도 표시) |
+| 예식장 / 지도 링크 | `venue`, `mapUrls` |
+| 네이버 지도 임베드 | `naverMap` (`clientId`·좌표 입력, 설정 방법은 주석 참고) |
 | 지하철 / 셔틀 / 버스 | `subway`, `shuttle`, `busStops` |
 | 대절버스 | `charterBus` |
 | 계좌번호 | `accounts` |
-| 초대 문구 / 스토리 | `invitation`, `story` |
+| 초대 문구 / 스토리 타임라인 | `invitation`, `story` |
+| 신랑·신부 소개 | `couple.groom.intro`, `couple.bride.intro` |
 | 사진 | `images`, `galleryImages` |
-| 스냅 업로드 | `SNAP_UPLOAD_ENDPOINT`, `snapConfig` |
+| 스냅 이벤트 | `snapEvent`, `SNAP_UPLOAD_ENDPOINT`, `snapConfig` |
+| 메뉴 (영문·한글 제목) | `sections` |
 
 사진은 `src/assets/images/`에 넣고 `wedding.js` 상단의 import 경로만 바꾸면 됩니다.
 

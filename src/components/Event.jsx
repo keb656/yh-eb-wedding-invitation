@@ -1,15 +1,17 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import { SNAP_UPLOAD_ENDPOINT, snapConfig } from '../data/wedding'
+import { SNAP_UPLOAD_ENDPOINT, sectionIndex, snapConfig, snapEvent } from '../data/wedding'
 import { isEndpointConfigured, uploadSnaps } from '../utils/snapUpload'
+import Lines from './Lines'
 import SectionHeader from './SectionHeader'
 
 let nextId = 0
 const demoMode = !isEndpointConfigured(SNAP_UPLOAD_ENDPOINT)
 
-export default function Snap() {
+export default function Event() {
   const inputId = useId()
   const [items, setItems] = useState([]) // { id, file, url }
   const [uploader, setUploader] = useState('')
+  const [phone, setPhone] = useState('')
   const [status, setStatus] = useState('idle') // idle | uploading | done | error
   const [progress, setProgress] = useState({ done: 0, total: 0 })
   const [notice, setNotice] = useState('')
@@ -55,6 +57,10 @@ export default function Snap() {
   const onSubmit = async (event) => {
     event.preventDefault()
     if (!items.length || busy) return
+    if (!uploader.trim()) {
+      setNotice('선물을 보내드릴 수 있도록 성함을 입력해주세요.')
+      return
+    }
 
     setStatus('uploading')
     setNotice('')
@@ -66,6 +72,7 @@ export default function Snap() {
         {
           endpoint: SNAP_UPLOAD_ENDPOINT,
           uploader: uploader.trim(),
+          phone: phone.trim(),
           compress: { maxDimension: snapConfig.maxDimension, quality: snapConfig.quality },
           onProgress: (done, total) => setProgress({ done, total }),
         },
@@ -80,19 +87,41 @@ export default function Snap() {
   }
 
   return (
-    <section id="snap" className="section" tabIndex={-1} aria-labelledby="snap-title">
+    <section id="event" className="section" tabIndex={-1} aria-labelledby="event-title">
       <SectionHeader
-        index="06"
-        title="WEDDING SNAP"
-        id="snap-title"
-        subtitle={
-          <>
-            결혼식에서 담아주신 소중한 순간을
-            <br />
-            저희에게 보내주세요.
-          </>
-        }
+        index={sectionIndex('event')}
+        title="EVENT"
+        id="event-title"
+        subtitle={snapEvent.title}
       />
+
+      <p className="invitation-lead event-lead">
+        <Lines lines={snapEvent.lead} />
+      </p>
+      <p className="body-text">
+        <Lines lines={snapEvent.description} />
+      </p>
+
+      <ol className="steps">
+        {snapEvent.steps.map((step) => (
+          <li key={step.label}>
+            <span className="steps__num">{step.label}</span>
+            <strong>{step.title}</strong>
+            <span>{step.text}</span>
+          </li>
+        ))}
+      </ol>
+
+      <dl className="spec event-spec">
+        <div className="spec__row">
+          <dt>참여 기간</dt>
+          <dd>{snapEvent.period}</dd>
+        </div>
+        <div className="spec__row">
+          <dt>선정 발표</dt>
+          <dd>{snapEvent.announcement}</dd>
+        </div>
+      </dl>
 
       <form className="snap" onSubmit={onSubmit}>
         <input
@@ -137,16 +166,31 @@ export default function Snap() {
         )}
 
         <label className="field">
-          <span>보내는 분 (선택)</span>
+          <span>성함 (필수)</span>
           <input
             type="text"
             value={uploader}
             onChange={(e) => setUploader(e.target.value)}
-            placeholder="성함을 남겨주시면 감사히 기억하겠습니다"
+            placeholder="홍길동"
             maxLength={30}
+            required
             disabled={busy}
           />
         </label>
+
+        <label className="field">
+          <span>연락처 (선택 · 선정 시 선물 발송용)</span>
+          <input
+            type="tel"
+            inputMode="tel"
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
+            placeholder="010-0000-0000"
+            maxLength={20}
+            disabled={busy}
+          />
+        </label>
+        <p className="note">{snapEvent.privacyNote}</p>
 
         <button type="submit" className="line-button line-button--solid line-button--block" disabled={!items.length || busy}>
           {busy ? 'UPLOADING…' : 'UPLOAD'}
@@ -163,7 +207,7 @@ export default function Snap() {
           )}
           {status === 'done' && (
             <p className="snap__done">
-              소중한 사진이 전달되었습니다. 감사합니다.
+              소중한 사진이 전달되었습니다. 이벤트에 참여해주셔서 감사합니다.
               {demoMode && <small> (데모 모드 — 실제 전송은 되지 않았습니다)</small>}
             </p>
           )}

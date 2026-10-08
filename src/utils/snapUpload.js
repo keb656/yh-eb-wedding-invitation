@@ -12,10 +12,10 @@ const safeName = (value) => value.replace(/[^\w.\-가-힣]/g, '_').slice(0, 60)
  * Google Apps Script는 CORS preflight를 지원하지 않으므로
  * Content-Type을 text/plain으로 보내 preflight를 피합니다.
  *
- * 요청 body (JSON): { filename, mimeType, data(base64), uploader }
+ * 요청 body (JSON): { filename, mimeType, data(base64), uploader, phone }
  * 응답 (JSON, 선택): { ok: true } / { ok: false, error }
  */
-export async function uploadSnaps(files, { endpoint, uploader = '', compress = {}, onProgress }) {
+export async function uploadSnaps(files, { endpoint, uploader = '', phone = '', compress = {}, onProgress }) {
   const live = isEndpointConfigured(endpoint)
   const stamp = Date.now()
 
@@ -28,7 +28,7 @@ export async function uploadSnaps(files, { endpoint, uploader = '', compress = {
       const response = await fetch(endpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-        body: JSON.stringify({ filename, mimeType: compressed.type, data, uploader }),
+        body: JSON.stringify({ filename, mimeType: compressed.type, data, uploader, phone }),
       })
       if (!response.ok) throw new Error(`업로드 실패 (${response.status})`)
       const result = await response.json().catch(() => ({}))

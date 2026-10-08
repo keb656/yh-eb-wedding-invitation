@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { couple, venue, wedding } from '../data/wedding'
+import { couple, sectionIndex, venue, wedding } from '../data/wedding'
 import { downloadICS, googleCalendarUrl } from '../utils/calendar'
 import { daysUntil, formatDDay, monthMatrix } from '../utils/date'
 import SectionHeader from './SectionHeader'
@@ -25,7 +25,7 @@ export default function WeddingDay() {
 
   return (
     <section id="wedding-day" className="section" tabIndex={-1} aria-labelledby="wedding-day-title">
-      <SectionHeader index="02" title="WEDDING DAY" id="wedding-day-title" />
+      <SectionHeader index={sectionIndex('wedding-day')} title="WEDDING DAY" id="wedding-day-title" />
 
       <div className="day-block">
         <p className="day-block__date">{wedding.dateEn}</p>

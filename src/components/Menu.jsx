@@ -50,7 +50,8 @@ export default function Menu() {
                   <li key={section.id}>
                     <button type="button" onClick={() => go(section.id)}>
                       <span className="menu-list__num">{String(i + 1).padStart(2, '0')}</span>
-                      {section.label}
+                      <span className="menu-list__en">{section.label}</span>
+                      <span className="menu-list__ko">{section.labelKo}</span>
                     </button>
                   </li>
                 ))}

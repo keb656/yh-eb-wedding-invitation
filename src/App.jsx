@@ -1,14 +1,13 @@
 import Account from './components/Account'
-import Bus from './components/Bus'
+import Event from './components/Event'
 import Hero from './components/Hero'
 import Invitation from './components/Invitation'
 import Location from './components/Location'
 import Menu from './components/Menu'
 import OurStory from './components/OurStory'
 import QuickView from './components/QuickView'
-import Snap from './components/Snap'
+import Transport from './components/Transport'
 import WeddingDay from './components/WeddingDay'
-import WeddingGallery from './components/WeddingGallery'
 import { couple, wedding } from './data/wedding'
 import './App.css'
 
@@ -23,11 +22,10 @@ function App() {
         <Invitation />
         <WeddingDay />
         <Location />
-        <Bus />
+        <Transport />
         <Account />
-        <Snap />
+        <Event />
         <OurStory />
-        <WeddingGallery />
       </main>
 
       <footer className="footer">
