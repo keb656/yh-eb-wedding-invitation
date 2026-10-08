@@ -8,6 +8,7 @@
  *     import groomPhoto from '../assets/images/groom.jpg'
  */
 
+import heroPhoto from '../assets/hero.png'
 import groomPhoto from '../assets/images/groom.svg'
 import bridePhoto from '../assets/images/bride.svg'
 import gallery01 from '../assets/images/gallery-01.svg'
@@ -24,9 +25,8 @@ import gallery08 from '../assets/images/gallery-08.svg'
 ========================================================= */
 
 export const images = {
-  // 임시 Hero 사진 (외부 URL). 실제 사진은 import 한 변수로 교체하세요.
-  // 예) import heroPhoto from '../assets/images/hero.jpg'  →  hero: heroPhoto
-  hero: 'https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=2000&q=85',
+  // 첫 화면 사진: src/assets/hero.png 파일을 같은 이름으로 덮어쓰면 교체됩니다.
+  hero: heroPhoto,
   heroAlt: '김영환과 김은비의 웨딩 사진',
   groom: groomPhoto,
   bride: bridePhoto,
