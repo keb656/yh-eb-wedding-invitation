@@ -1,16 +1,37 @@
-# React + Vite
+# KIM YOUNGHWAN & KIM EUNBI — Mobile Wedding Invitation
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+React + Vite 모바일 청첩장.
 
-Currently, two official plugins are available:
+## 실행
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+```bash
+npm install
+npm run dev      # 개발 서버
+npm run build    # 배포용 빌드 (dist/)
+npm run preview  # 빌드 결과 확인
+```
 
-## React Compiler
+## 데이터 / 사진 교체
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+모든 텍스트·정보는 **`src/data/wedding.js`** 한 곳에서 관리합니다.
 
-## Expanding the ESLint configuration
+| 항목 | wedding.js |
+| --- | --- |
+| 이름 / 부모님 | `couple`, `parents` |
+| 날짜 / 시간 | `wedding` (캘린더·D-Day는 `start`/`end` 기준) |
+| 예식장 / 지도 링크 | `venue`, `mapUrls` (`embed`에 iframe URL을 넣으면 지도 표시) |
+| 지하철 / 셔틀 / 버스 | `subway`, `shuttle`, `busStops` |
+| 대절버스 | `charterBus` |
+| 계좌번호 | `accounts` |
+| 초대 문구 / 스토리 | `invitation`, `story` |
+| 사진 | `images`, `galleryImages` |
+| 스냅 업로드 | `SNAP_UPLOAD_ENDPOINT`, `snapConfig` |
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+사진은 `src/assets/images/`에 넣고 `wedding.js` 상단의 import 경로만 바꾸면 됩니다.
+
+## 스냅 업로드 (Google Drive)
+
+1. `docs/snap-upload-apps-script.gs` 내용을 Google Apps Script에 붙여넣고 웹 앱으로 배포
+2. 발급된 `/exec` URL을 `SNAP_UPLOAD_ENDPOINT`에 입력
+
+URL이 설정되기 전에는 데모 모드로 동작합니다(실제 전송 없음).
